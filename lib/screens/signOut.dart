@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ollert/Widgets1/projectWidget.dart';
+import '../Widgets/projectWidget.dart';
 import 'package:ollert/models/Project.dart';
 import 'package:ollert/screens/AddProject.dart';
 import 'package:ollert/screens/signIn.dart';
