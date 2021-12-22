@@ -12,7 +12,7 @@ class _LogoutPageState extends State<LogoutPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+        value: const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Container(

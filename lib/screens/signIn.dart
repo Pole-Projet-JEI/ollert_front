@@ -1,137 +1,125 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ollert/Service/auth.dart';
+import 'package:ollert/Widgets/textBox.dart';
 
 class LoginPage extends StatefulWidget {
-
-
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-
+  bool isLoad = false;
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController controllerDescription = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+        value: const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color(0xff40C7DA), Color(0xff398AA3)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
             width: double.infinity,
             height: double.infinity,
-            color:Color(0xff5a9bef),
+            //Color(0xff5a9bef),
             child: SingleChildScrollView(
-              padding: EdgeInsets.only(
-                bottom: 0.0,
-              ),
-              physics: AlwaysScrollableScrollPhysics(),
+              physics: const AlwaysScrollableScrollPhysics(),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: 80,
-                  ),
-                  Text(
-                    'Sign In',
-                    style: TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.bold,),
-                  ),
-                  SizedBox(
-                    height: 60,
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 50, right: 5, top: 40),
-                      child: Text(
-                        'Email',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 5, right: 5, top: 5),
-
-                  ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 45),
-                width: double.infinity,
-                child: RaisedButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                  ),
-                  color: Colors.white,
-                  child:
-                  Row(
-                children:   [
-                  Icon(Icons.mail,),Text(
-                  '',
-                  style: TextStyle(fontSize: 16, color: Color(0xff5a9bef)),
-              ),
-                  ],),
-                  onPressed: () {
-
-                  },
-                ),
-              ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
-                  Align(
-                    alignment: Alignment.centerLeft,
+                  const Align(
                     child: Padding(
-                      padding: EdgeInsets.only(left: 50, right: 5, top: 18),
-                      child: Text(
-                        'Password',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 13,
-                          color: Colors.white,
+                        padding: EdgeInsets.only(left: 5, right: 5, top: 80),
+                        child: CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          radius: 50,
+                          child: Icon(
+                            Icons.person,
+                            size: 100,
+                            color: Colors.blueGrey,
+                          ),
+                        )),
+                  ),
+                  const Text(
+                    'Login',
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      //fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextBoxWidget(name:"Username",hintText: "Enter your username",
+                  icon:Icons.person,controller: controllerDescription,),
+                  TextBoxWidget(name:"Password",hintText: "Enter your password",
+                  icon:Icons.vpn_key,controller: passwordController,inputType: TextInputType.visiblePassword,
+                  obscureText: true,),
+                  const Padding(
+                      padding: EdgeInsets.only(left: 10, right: 5, top: 50)),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      gradient: const LinearGradient(
+                        colors: [Color(0xff219138), Color(0xff1fc441)],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                    ),
+                    width: 150,
+                    height: 50,
+                    child: FlatButton(
+                      onPressed: () {
+                        AuthService(isLoad: this.isLoad)
+                            .signIn(controllerDescription.text,
+                                passwordController.text)
+                            .then((value) {
+                          setState(() {
+                            print("button" +
+                                controllerDescription.text +
+                                " " +
+                                passwordController.text);
+                            isLoad = true;
+                          });
+                        });
+                      },
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          side: const BorderSide(color: Color(0xff1fc441))),
+                      textColor: Colors.black54,
+                      child: Center(
+                        child: Text(
+                          "Login".toUpperCase(),
+                          style: const TextStyle(
+                            color: Color(0xffc9f5d2),
+                            fontSize: 16.0,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 5, right: 5, top: 5),
-
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 45),
-                    width: double.infinity,
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      ),
-                      color: Colors.white,
-                      child:
-                      Row(
-                        children:   [
-                          Icon(Icons.vpn_key,),Text(
-                            '',
-                            style: TextStyle(fontSize: 16, color: Color(0xff5a9bef)),
-                          ),
-                        ],),
-                      onPressed: () {
-
-                      },
-                    ),
-                  ),
-
-
-
-                      ],
-                    ),
-                  ),
-
+                  const SizedBox(
+                    height: 20,)
+                ],
               ),
             ),
           ),
+        ),
+      ),
     );
   }
 }
