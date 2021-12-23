@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ollert/screens/signIn.dart';
 import 'package:ollert/screens/signOut.dart';
+import 'package:ollert/screens/AddProject.dart';
 void main() {
   runApp( MyApp());
 }
@@ -20,7 +21,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: LogoutPage(),
+      home: AddProject(),
 
     );
   }

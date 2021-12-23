@@ -55,7 +55,10 @@ class _LogoutPageState extends State<LogoutPage> {
                       fontSize: 25,
                     ),
                   ),
-                  IconButton(onPressed:(){}, icon: const Icon(
+                  IconButton(onPressed:(){Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => AddProject()),
+  );}, icon: const Icon(
                     Icons.logout,
                     size: 25,
                   ))
