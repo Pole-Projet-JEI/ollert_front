@@ -15,12 +15,15 @@ class _MyAppState extends State<MyApp> {
 
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        "/projects": (context)=>LogoutPage(),
+      },
       initialRoute: '/',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: LogoutPage(),
+      home: LoginPage(),
 
     );
   }

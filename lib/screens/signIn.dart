@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ollert/Service/auth.dart';
+import 'package:ollert/Service/authServices.dart';
 import 'package:ollert/Widgets/textBox.dart';
 
 class LoginPage extends StatefulWidget {
@@ -94,6 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                                 " " +
                                 passwordController.text);
                             isLoad = true;
+                            Navigator.of(context).pushNamed('/projects');
                           });
                         });
                       },

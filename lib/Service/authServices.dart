@@ -5,9 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
 class AuthService {
-  bool isLoad;
+  bool? isLoad;
 
-  AuthService({required this.isLoad});
+  AuthService({ this.isLoad});
 
   Future<void> signIn(String username, String password) async {
     User user;
@@ -25,7 +25,7 @@ class AuthService {
         },
         body: data,
         encoding: Encoding.getByName("utf-8"));
-    print("amal w pisa");
+    print("auth "  + response.body);
     if (response.statusCode == 200) {
       isLoad = false;
       var jsonData = json.decode(response.body);
@@ -35,7 +35,14 @@ class AuthService {
       }
     }
   }
+  Future<bool> SingOut() async
+  {
+    var response = await http.get(Uri.parse("${Config.url}/auth/logout"));
+    return (response.statusCode==200);
+  }
 }
+
+
 /*   sharedPreferences.setString("token", jsonData('token'));
         /* Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: builder), (route) => false)*/
 
