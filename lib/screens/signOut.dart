@@ -21,8 +21,6 @@ class _LogoutPageState extends State<LogoutPage> {
       deadline: DateTime(2021,12,29),idManager: 1),Project(id:1,name:"projet 1",type:"IT",description:"Résultat de recherche d'images pour description projet. La description du projet est une déclaration écrite formelle du projet, de son idée et de son contexte, qui explique les buts et les objectifs à atteindre, le besoin commercial et le problème à résoudre, les pièges et les défis potentiels, les approches et les méthodes d'exécution, les estimations des ressources",
       deadline: DateTime(2021,12,29),idManager: 1),
     ];
-
-
     return SafeArea(
         child:Scaffold
       (
