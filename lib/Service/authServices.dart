@@ -23,7 +23,7 @@ class AuthService {
           "Accept": "application/json",
           "Content-Type": "application/x-www-form-urlencoded"
         },
-        body: data,
+        body: json.encode(data),
         encoding: Encoding.getByName("utf-8"));
     print("auth "  + response.body);
     if (response.statusCode == 200) {

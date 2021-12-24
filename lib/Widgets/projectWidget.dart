@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ollert/models/Project.dart';
+import 'package:ollert/models/project.dart';
 
 class ProjectWidget extends StatelessWidget {
   Project? project;
@@ -22,7 +22,7 @@ class ProjectWidget extends StatelessWidget {
             ),
           ],
           color:Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(15))  ),
+          borderRadius: const BorderRadius.all(Radius.circular(15))),
       child: Column(
         children: [
           Row(
