@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-Widget textfieldwidget(String s) => Column(
+Widget textfieldwidget(String s,TextEditingController s2) => Column(
   crossAxisAlignment: CrossAxisAlignment.start, 
   children: [ 
     Text( 
@@ -9,9 +9,13 @@ Widget textfieldwidget(String s) => Column(
 
     ),
     const SizedBox(height:5),
-    TextField(
-      //controller: 
-    ),
+    TextFormField(
+     controller: s2,
+                  decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                  
+                  ),
+                ),
 
     
   ],

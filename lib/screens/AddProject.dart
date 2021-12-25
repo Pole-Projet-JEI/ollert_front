@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ollert/Service/projectServices.dart';
 import 'package:ollert/Widgets/TextFieldWidget.dart';
 import 'package:ollert/models/Project.dart';
 import 'package:ollert/screens/signOut.dart';
 
 class AddProject extends StatelessWidget {
-  const AddProject({ Key? key }) : super(key: key);
+   AddProject({ Key? key }) : super(key: key);
+    TextEditingController controllerName = TextEditingController(text: "Enter your Project Name");
+    TextEditingController controllerType = TextEditingController(text: "Enter your Project Type");
+    TextEditingController controllerDeadline = TextEditingController(text: "Enter your Project Deadline");
+    TextEditingController controllerDescription = TextEditingController(text: "Enter your Project Description");
+
 
   @override
   Widget build(BuildContext context) { 
@@ -38,19 +44,35 @@ class AddProject extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-            textfieldwidget("  name"),
-            textfieldwidget("  ID"),
-            textfieldwidget("  type"),
-            textfieldwidget("  deadline"),
-            textfieldwidget("  description"),
-            ElevatedButton(
-                  onPressed: () { Navigator.push( context,
-              MaterialPageRoute(builder: (context) => LogoutPage()),
-            );
+            textfieldwidget("  name",controllerName),
+            textfieldwidget("  type",controllerType),
+            textfieldwidget("  deadline",controllerDeadline),
+            textfieldwidget("  description",controllerDescription),
+                
+                  TextButton(
+                  onPressed: () {
+                    print(
+                      controllerName.text +
+                       controllerType.text +
+                          controllerDeadline.text+
+                          controllerDescription.text,
+                    );
+                    Project p= Project(
+                      name: controllerName.text,
+                      type: controllerType.text,
+                      deadline: DateTime.parse(controllerDeadline.text),
+                      description :controllerDescription.text,
+                    );
+                    print(p.name +
+                        p.type +
+                      p.deadline.toString() +
+                        p.description
+                    );
+                    ProjectServices.addProject(p);
+                    Navigator.of(context).pop();
                   },
-                  child: Text('done', style : TextStyle(
-                    fontSize: 20.0,),
-                ))
+                  child: Text("Add"),
+                ),
           ],
           )
         ,),

@@ -11,10 +11,10 @@ String projectToJson(List<Project> data) => json.encode(List<dynamic>.from(data.
 class Project {
   Project({
     this.id,
-    this.name="",
-    this.type="",
-    this.description="",
-    this.deadline,
+   required this.name,
+   required this.type,
+   required this.description,
+   required  this.deadline,
     this.idManager,
   });
 

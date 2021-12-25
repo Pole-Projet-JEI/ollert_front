@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: AddTask(),
+      home: AddProject(),
 
     );
   }
