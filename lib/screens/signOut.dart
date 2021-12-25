@@ -37,10 +37,13 @@ class _LogoutPageState extends State<LogoutPage> {
                 const SizedBox(
                   width: 25,
                 ),
+                
                 const Text(
                   "Projets",
                   style: TextStyle(
                     fontSize: 25,
+                    
+                    
                   ),
                 ),
                 IconButton(
