@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ollert/Service/projectServices.dart';
 import 'package:ollert/Widgets/TextFieldWidget.dart';
-import 'package:ollert/models/Project.dart';
+import 'package:ollert/models/project.dart';
 import 'package:ollert/screens/signOut.dart';
 
 class AddProject extends StatelessWidget {
@@ -31,7 +31,6 @@ class AddProject extends StatelessWidget {
         ),
       child: SingleChildScrollView(
           child: Column(
-     
           children: [
             SizedBox(height: topPadding),
             SizedBox(height: 5),
