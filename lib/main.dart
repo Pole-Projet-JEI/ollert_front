@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ollert/screens/AddProject.dart';
 import 'package:ollert/screens/signIn.dart';
 import 'package:ollert/screens/signOut.dart';
 void main() {
@@ -17,6 +18,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       routes: {
         "/projects": (context)=>LogoutPage(),
+        "/AddProject": (context)=>AddProject(),
+
       },
       initialRoute: '/',
       theme: ThemeData(

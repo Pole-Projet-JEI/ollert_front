@@ -10,7 +10,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool isLoad = false;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                         )),
                   ),
                   const Text(
-                    'Login',
+                    'Connexion',
                     style: TextStyle(
                       fontSize: 30,
                       color: Colors.white,
@@ -64,9 +63,9 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  TextBoxWidget(name:"Username",hintText: "Enter your username",
+                  TextBoxWidget(name:"Nom d'utilisateur",hintText: "Entrer le nom",
                   icon:Icons.person,controller: controllerDescription,),
-                  TextBoxWidget(name:"Password",hintText: "Enter your password",
+                  TextBoxWidget(name:"Mot de passe",hintText: "Entrer le mot de passe",
                   icon:Icons.vpn_key,controller: passwordController,inputType: TextInputType.visiblePassword,
                   obscureText: true,),
                   const Padding(
@@ -84,18 +83,16 @@ class _LoginPageState extends State<LoginPage> {
                     height: 50,
                     child: FlatButton(
                       onPressed: () {
-                        AuthService(isLoad: this.isLoad)
+                        AuthService()
                             .signIn(controllerDescription.text,
                                 passwordController.text)
                             .then((value) {
-                          setState(() {
-                            print("button" +
-                                controllerDescription.text +
-                                " " +
-                                passwordController.text);
-                            isLoad = true;
-                            Navigator.of(context).pushNamed('/projects');
-                          });
+                            if(
+                            value
+                            )
+                              {
+                                Navigator.of(context).pushReplacementNamed('/projects');
+                              }
                         });
                       },
                       shape: RoundedRectangleBorder(
@@ -104,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                       textColor: Colors.black54,
                       child: Center(
                         child: Text(
-                          "Login".toUpperCase(),
+                          "Se connecter".toUpperCase(),
                           style: const TextStyle(
                             color: Color(0xffc9f5d2),
                             fontSize: 16.0,

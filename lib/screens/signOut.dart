@@ -1,8 +1,12 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:ollert/Service/authServices.dart';
 import 'package:ollert/Service/projectServices.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../Widgets/projectWidget.dart';
 import 'package:ollert/models/project.dart';
 
@@ -12,6 +16,36 @@ class LogoutPage extends StatefulWidget {
 }
 
 class _LogoutPageState extends State<LogoutPage> {
+  bool? isManager;
+  Widget? floating;
+
+  Future <Widget> getFloating() async
+  {
+    SharedPreferences sp= await SharedPreferences.getInstance();
+    isManager=sp.getBool("isManager");
+    if(isManager==true)
+      {
+        return FloatingActionButton(
+          backgroundColor: Colors.black87,
+          child:const  Icon(
+            Icons.add,
+            size: 30,
+            color: Colors.white,
+          ),
+          onPressed: (){
+            Navigator.of(context).pushNamed("/AddProject");
+          },
+        );
+      }
+      return Container();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getFloating().then((value) => floating=value);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -31,37 +65,56 @@ class _LogoutPageState extends State<LogoutPage> {
                 end: Alignment.bottomRight,
               ),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  width: 25,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const SizedBox(
+                      width: 25,
+                    ),
+                    const Text(
+                      "Projets",
+                      style: TextStyle(
+                        fontSize: 25,
+                      ),
+                    ),
+                    IconButton(
+                        onPressed: () async {
+                          await AuthService().SingOut().then((value) {
+                            if (value) {
+                              print('value ' + value.toString());
+                              Navigator.of(context)
+                                  .pushNamedAndRemoveUntil("/", (route) => false);
+                            }
+                          });
+                        },
+                        icon: const Icon(
+                          Icons.logout,
+                          size: 25,
+                        ))
+                  ],
                 ),
-                const Text(
-                  "Projets",
-                  style: TextStyle(
-                    fontSize: 25,
-                  ),
-                ),
-                IconButton(
-                    onPressed: () async {
-                      await AuthService().SingOut().then((value) {
-                        if (value) {
-                          print('value ' + value.toString());
-                          Navigator.of(context)
-                              .pushNamedAndRemoveUntil("/", (route) => false);
-                        }
-                      });
-                    },
-                    icon: const Icon(
-                      Icons.logout,
-                      size: 25,
-                    ))
+                if(isManager==true)
+                  Column(
+                    children: [
+                      SizedBox(height: 30,),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text("Balayer vers la gauche ou la droite pour supprimer",style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold
+                        ),),
+                      )
+                    ],
+                  )
+
               ],
-            ),
+            )
           ),
           Container(
-            height: MediaQuery.of(context).size.height>MediaQuery.of(context).size.width?MediaQuery.of(context).size.height * 0.85:MediaQuery.of(context).size.height*0.7,
+            height: MediaQuery.of(context).size.height>MediaQuery.of(context).size.width?MediaQuery.of(context).size.height * 0.83:MediaQuery.of(context).size.height*0.7,
             child: FutureBuilder<List<Project>>(
                 future: ProjectServices().getProjects(),
                 builder: (context, snapshot) {
@@ -80,6 +133,7 @@ class _LogoutPageState extends State<LogoutPage> {
                       itemBuilder: (context, index) {
                         Project project = projects[index];
                         return Dismissible(
+                          direction: (isManager==true)?DismissDirection.startToEnd:DismissDirection.none,
                           key: UniqueKey(),
                           child: ProjectWidget(project: project),
                           confirmDismiss: (DismissDirection direction) async {
@@ -198,7 +252,9 @@ class _LogoutPageState extends State<LogoutPage> {
                 }),
           ),
         ],
-      )),
+      ),
+          floatingActionButton: floating,
+      ),
     );
   }
 }

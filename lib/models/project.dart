@@ -35,11 +35,11 @@ class Project {
   );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
+    "id": id??0,
     "name": name,
     "type": type,
     "description": description,
     "deadline": deadline?.toIso8601String(),
-    "id_manager": idManager,
+    "id_manager": idManager??0,
   };
 }
