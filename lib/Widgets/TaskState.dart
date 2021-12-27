@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
-Widget taskState() => Row( 
+import 'package:ollert/screens/Doing.dart';
+import 'package:ollert/screens/Done.dart';
+import 'package:ollert/screens/TaskPage.dart';
+Widget taskState(context) => Row( 
   crossAxisAlignment: CrossAxisAlignment.start, 
   mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
   children:<Widget> [ 
-  ElevatedButton(onPressed:(){},style: raisedButtonStyle, 
+  ElevatedButton(onPressed:(){Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => TaskPage()),
+  );},style: raisedButtonStyle, 
   child: Text(" To do")),
-  ElevatedButton(onPressed:(){}, style: raisedButtonStyle, 
+  ElevatedButton(onPressed:(){ Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => Doing()),
+  );}, style: raisedButtonStyle, 
   child: Text("Doing")),
-  ElevatedButton(onPressed:(){}, style: raisedButtonStyle, 
+  ElevatedButton(onPressed:(){
+     Navigator.push(context,MaterialPageRoute(builder: (context) => Done()),
+  );}, style: raisedButtonStyle, 
   child: Text("Done")),
   ]
 );

@@ -1,26 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:ollert/Widgets/addButton.dart';
 import 'package:ollert/Widgets/buttonTaskWidget.dart';
 import 'package:ollert/models/Task.dart';
 import 'package:ollert/Widgets/TaskState.dart';
 import 'package:ollert/Widgets/TaskWidget.dart';
-
-
-
 import 'package:ollert/Widgets/projectWidget.dart';
-class TaskPage extends StatelessWidget {
-  // TaskPage({ Key? key }) : super(key: key);
-    static const String route = '/';
-
-  Task task1 = new Task(
-    name:'Create the ADD Page in dart',
-    id: 1,
-     project:'project1',
-    description: ' Use the task topic to describe the steps of a particular task, or to provide an overview of a higher-level task. The task topic includes sections for describing the context, prerequisites, actual steps, expected results, example, and expected next steps for a task.',
-        deadline: "13/02/2022",
-        state:'doing');
-      
-
+import 'package:ollert/Widgets/addButton.dart';
+class Doing extends StatelessWidget {
+  const Doing({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -65,13 +51,10 @@ class TaskPage extends StatelessWidget {
             ),        
        ),
       Positioned(top: 80, child:  Container(child:
-       taskState(context),
-          ),
-         ),
-         Positioned(top:150 ,child: buttonTaskWidget(context,"Task1","description",task1)),
-          Positioned(top:600 ,child:
+       taskState(context))),
+        Positioned(top:600 ,child:
          Button(context)),
-         
+           
          ]
       ))
       

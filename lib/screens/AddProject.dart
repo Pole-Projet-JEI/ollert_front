@@ -43,10 +43,10 @@ class AddProject extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-            textfieldwidget("  name",controllerName),
-            textfieldwidget("  type",controllerType),
-            textfieldwidget("  deadline",controllerDeadline),
-            textfieldwidget("  description",controllerDescription),
+            textfieldwidget("  name"),
+            textfieldwidget("  type"),
+            textfieldwidget("  deadline"),
+            textfieldwidget("  description"),
                 
                   TextButton(
                   onPressed: () {

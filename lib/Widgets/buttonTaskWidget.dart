@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:ollert/models/Task.dart';
 import 'package:ollert/screens/TaskDescription.dart';
-Widget buttonTaskWidget(context,String s)=> Column( children :<Widget>[
+Widget buttonTaskWidget(context,String s,String s3,Task task1)=> Column( children :<Widget>[
   ElevatedButton(onPressed:(){
-     Navigator.push( context,
-    MaterialPageRoute(builder: (context) => TaskDescription()),
-  );
-  },style: raisedButtonStyle, 
+        Navigator.of(context).pushNamed(s3,arguments:task1 );}
+  ,style: raisedButtonStyle, 
   child: Text(s)),]
-
-
-
-
-
 );
 final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
   onPrimary: Colors.white,
