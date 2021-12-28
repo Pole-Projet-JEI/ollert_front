@@ -84,7 +84,6 @@ class _LogoutPageState extends State<LogoutPage> {
                         onPressed: () async {
                           await AuthService().SingOut().then((value) {
                             if (value) {
-                              print('value ' + value.toString());
                               Navigator.of(context)
                                   .pushNamedAndRemoveUntil("/", (route) => false);
                             }
@@ -102,8 +101,8 @@ class _LogoutPageState extends State<LogoutPage> {
                       SizedBox(height: 30,),
                       Padding(
                         padding: const EdgeInsets.all(10.0),
-                        child: Text("Balayer vers la gauche ou la droite pour supprimer",style: TextStyle(
-                            color: Colors.red,
+                        child: Text("Balayer vers la droite pour supprimer",style: TextStyle(
+                            color: Colors.red.shade300,
                             fontWeight: FontWeight.bold
                         ),),
                       )
@@ -126,6 +125,15 @@ class _LogoutPageState extends State<LogoutPage> {
                   }
                   if (snapshot.hasError) {
                     // return: show error widget
+                  }
+                  if(snapshot.hasData)
+                  {
+                    bool isEmpty = snapshot.data?.isEmpty ?? true;
+                    if(isEmpty)
+                    {
+                      return Center(
+                          child: Text("Pas de projets"));
+                    }
                   }
                   List<Project> projects = snapshot.data ?? [];
                   return ListView.builder(

@@ -8,7 +8,9 @@ class ProjectWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(onPressed: (){}, child: Container(
+    return FlatButton(onPressed: (){
+      Navigator.of(context).pushNamed("/TaskPage",arguments:project);
+    }, child: Container(
       margin: EdgeInsets.all(10),
       padding: EdgeInsets.all(20),
       width: MediaQuery.of(context).size.width*0.95,

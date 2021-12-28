@@ -6,7 +6,7 @@ import 'package:ollert/Widgets/TextFieldWidget.dart';
 import 'package:ollert/Widgets/getMembersButton.dart';
 import 'package:ollert/Widgets/textBox.dart';
 import 'package:ollert/models/project.dart';
-import 'package:ollert/screens/signOut.dart';
+import 'package:ollert/screens/projectsPage.dart';
 
 class AddProject extends StatefulWidget {
 
@@ -73,6 +73,7 @@ class _AddProjectState extends State<AddProject> {
               TextFieldWidget(
                 name: "Nom du projet",
                 controller: name,
+                hint:"Entrer nom"
               ),
               getMembersButton(
                 name: "Membres",
@@ -84,15 +85,18 @@ class _AddProjectState extends State<AddProject> {
               ),
               TextFieldWidget(
                 name: "Type du projet",
-                controller: type
+                controller: type,
+                hint:"Entrer le type"
               ),
               TextFieldWidget(
                 name: "Description",
                 controller: description,
+                hint: "Entrer une description",
               ),
               TextFieldWidget(
-                name: "Deadline",
+                name: "Date limite",
                 controller: deadline,
+                hint:"Exemple : 2020-10-31 "
               ),
               const SizedBox(height: 20),
               Container(

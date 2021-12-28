@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ollert/screens/AddProject.dart';
+import 'package:ollert/screens/AddTask.dart';
+import 'package:ollert/screens/TaskPage.dart';
+import 'package:ollert/screens/showTask.dart';
 import 'package:ollert/screens/signIn.dart';
-import 'package:ollert/screens/signOut.dart';
+import 'package:ollert/screens/projectsPage.dart';
 void main() {
   runApp( MyApp());
 }
@@ -19,6 +22,9 @@ class _MyAppState extends State<MyApp> {
       routes: {
         "/projects": (context)=>LogoutPage(),
         "/AddProject": (context)=>AddProject(),
+        "/AddTask": (context)=>AddTask(),
+        "/TaskPage": (context)=>TaskPage(),
+        "/ShowTask": (context)=>ShowTask(),
 
       },
       initialRoute: '/',

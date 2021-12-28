@@ -1,21 +1,27 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ollert/Service/tasksServices.dart';
 import 'package:ollert/Widgets/TextFieldWidget.dart';
 import 'package:ollert/models/Project.dart';
 import 'package:ollert/screens/TaskPage.dart';
-import 'package:ollert/screens/signOut.dart';
+import 'package:ollert/screens/projectsPage.dart';
 
 class AddTask extends StatelessWidget {
-  const AddTask({Key? key}) : super(key: key);
+
+  TextEditingController name=TextEditingController();
+  TextEditingController description=TextEditingController();
+  TextEditingController deadline=TextEditingController();
+  int? idProject;
+
+   AddTask({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    idProject=ModalRoute.of(context)?.settings.arguments as int;
     return SafeArea(
       child: Scaffold(
           body: Container(
-        // padding: EdgeInsets.only(top:50),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
@@ -50,7 +56,7 @@ class AddTask extends StatelessWidget {
               SizedBox(height: 20),
               Image.asset(
                 'assets/task_icon.png',
-                width: 150,
+                width: 130,
               ),
               SizedBox(height: 20),
               const Text(
@@ -61,9 +67,9 @@ class AddTask extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              TextFieldWidget(name: "Nom"),
-              TextFieldWidget(name: "Date limite"),
-              TextFieldWidget(name: "Description"),
+              TextFieldWidget(name:"Nom",controller: name,hint: "Entrer un nom",),
+              TextFieldWidget(name:"Date limite",controller: deadline,hint:"Exemple : 2020-10-31 "),
+              TextFieldWidget(name:"Description",controller: description,hint: "Entrer une description"),
               SizedBox(
                 height: 20,
               ),
@@ -79,7 +85,21 @@ class AddTask extends StatelessWidget {
                 width: 140,
                 height: 40,
                 child: FlatButton(
-                  onPressed: () async {},
+                  onPressed: () async {
+                    Map<String,dynamic> task={
+                      "name":name.text,
+                      "description":description.text,
+                      "deadline":deadline.text,
+                      "id_project":'${idProject}'
+                    };
+                    TasksServices().addTask(task).then((value) {
+                      if(value)
+                        {
+                          Navigator.of(context).pop();
+                        }
+                    });
+
+                  },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: const BorderSide(color: Color(0xff1fc441))),

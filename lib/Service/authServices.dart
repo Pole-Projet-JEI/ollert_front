@@ -36,7 +36,6 @@ class AuthService {
             sharedPreferences.setBool("isManager",false);
           }
       });
-      print("ml sp "+ sharedPreferences.getString("token").toString());
     }
     return (response.statusCode == 200);
   }

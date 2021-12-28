@@ -16,10 +16,8 @@ class ProjectServices{
       "Content-Type": "application/x-www-form-urlencoded",
       "Authorization": sharedPreferences.getString("token").toString()
     },);
-    print(response.body);
     if(response.statusCode==200)
       {
-
         var projects = projectFromJson(response.body);
         return projects;
       }
@@ -34,9 +32,7 @@ class ProjectServices{
       "Authorization": sharedPreferences.getString("token").toString()
     },
     );
-    print(response.body);
     return(response.statusCode==200);
-
   }
 
   Future<bool> addProject(Map<String, dynamic> project,List<int> members) async
@@ -51,7 +47,6 @@ class ProjectServices{
     },
       body: data
     );
-    print("statusCode for addProject"+response.statusCode.toString());
     return response.statusCode==200;
   }
 }

@@ -1,43 +1,45 @@
+// To parse this JSON data, do
+//
+//     final task = taskFromJson(jsonString);
+
 import 'dart:convert';
 
-Task taskFromJson(String str) => Task.fromJson(json.decode(str));
+List<Task> taskFromJson(String str) => List<Task>.from(json.decode(str).map((x) => Task.fromJson(x)));
 
-String taskToJson(Task data) => json.encode(data.toJson());
+String taskToJson(List<Task> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Task {
-    Task({
-      this.id,
-         this.name,
-        this.description,
-       required this.deadline,
-       this.id_project,
-       this.id_state,
+  Task({
+    this.id,
+    this.name,
+    this.description,
+    this.deadline,
+    this.idProject,
+    this.idState,
+  });
 
-    });
+  int? id;
+  String? name;
+  String? description;
+  DateTime? deadline;
+  int? idProject;
+  int? idState;
 
-    String? name;
-    int? id;
-    int? id_project;
-    String? description;
-    String? deadline;
-    int? id_state;
+  factory Task.fromJson(Map<String, dynamic> json) => Task(
+    id: json["id"],
+    name: json["name"],
+    description: json["description"],
+    deadline: DateTime.parse(json["deadline"]),
+    idProject: json["id_project"],
+    idState: json["id_state"],
+  );
 
-    factory Task.fromJson(Map<String, dynamic> json) => Task(
-        name: json["name"],
-        id: json["id"],
-        id_project: json["id_project"],
-        description: json["description"],
-        deadline: json["deadline"],
-        id_state: json["id_state"],
-    );
-
-    Map<String, dynamic> toJson() => {
-        "name": name,
-        "id": id,
-        "id_project": id_project,
-        "description": description,
-        "deadline": deadline,
-        "id_state": id_state,
-    };
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "name": name,
+    "description": description,
+    "deadline": deadline?.toIso8601String(),
+    "id_project": idProject,
+    "id_state": idState,
+  };
 }
-

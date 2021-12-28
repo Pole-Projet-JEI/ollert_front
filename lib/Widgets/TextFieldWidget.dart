@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class TextFieldWidget extends StatelessWidget {
 
   String name;
-  TextEditingController controller;
-  TextFieldWidget({this.name="",required this.controller});
+  String hint;
+  TextEditingController? controller;
+  TextFieldWidget({this.name="",this.controller ,required this.hint});
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +44,7 @@ class TextFieldWidget extends StatelessWidget {
           child: TextFormField(
             controller: controller,
             decoration: InputDecoration(
+              hintText: hint,
               fillColor: Colors.white38,
               filled: true,
               border: OutlineInputBorder(
