@@ -4,7 +4,6 @@ import 'package:ollert/screens/AddTask.dart';
 import 'package:ollert/screens/signIn.dart';
 import 'package:ollert/screens/signOut.dart';
 import 'package:ollert/screens/TaskPage.dart';
-import 'package:ollert/models/RouteGenerator.dart';
 void main() {
   runApp( MyApp());
 }
@@ -21,13 +20,13 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       routes: {
         "/projects": (context)=>LogoutPage(),
+        "/AddTask":(context)=>AddTask(),
       },
       initialRoute: '/',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-        onGenerateRoute: RouteGenerator.generateRoute,
       home:  TaskPage(),
 
     );

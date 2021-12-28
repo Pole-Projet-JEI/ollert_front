@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ollert/models/Task.dart';
+import 'package:ollert/models/task.dart';
 class TaskWidget extends StatelessWidget {
   Task? task1;
   TaskWidget({required this.task1 });

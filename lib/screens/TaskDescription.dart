@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ollert/Widgets/TaskWidget.dart';
 import 'package:ollert/screens/TaskPage.dart';
 import 'package:ollert/Widgets/buttonTaskWidget.dart';
-import 'package:ollert/models/Task.dart';
+import 'package:ollert/models/task.dart';
 
 class TaskDescription extends StatelessWidget {
   //const TaskDescription({ Key? key }) : super(key: key);

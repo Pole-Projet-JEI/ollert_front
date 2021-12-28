@@ -63,7 +63,7 @@ class _LogoutPageState extends State<LogoutPage> {
               ],
             ),
           ),
-          Container(
+           Container(
             height: MediaQuery.of(context).size.height>MediaQuery.of(context).size.width?MediaQuery.of(context).size.height * 0.85:MediaQuery.of(context).size.height*0.7,
             child: FutureBuilder<List<Project>>(
                 future: ProjectServices().getProjects(),
