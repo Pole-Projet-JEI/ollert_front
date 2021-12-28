@@ -24,7 +24,7 @@ class Task {
 
     factory Task.fromJson(Map<String, dynamic> json) => Task(
         name: json["name"],
-        id: json["Id"],
+        id: json["id"],
         id_project: json["id_project"],
         description: json["description"],
         deadline: json["deadline"],
@@ -33,7 +33,7 @@ class Task {
 
     Map<String, dynamic> toJson() => {
         "name": name,
-        "Id": id,
+        "id": id,
         "id_project": id_project,
         "description": description,
         "deadline": deadline,

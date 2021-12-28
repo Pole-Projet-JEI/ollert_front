@@ -41,10 +41,9 @@ class AddTask extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-           textfieldwidget("  name"),
-          textfieldwidget("  ID"),
-          textfieldwidget("  deadline"),
-          textfieldwidget("  description"),
+            TextFieldWidget(name:"name"),
+            TextFieldWidget(name:"deadline"),
+            TextFieldWidget(name:"description"),
             ElevatedButton(
                   onPressed: () { Navigator.push( context,
               MaterialPageRoute(builder: (context) => TaskPage()),

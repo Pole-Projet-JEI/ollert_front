@@ -43,10 +43,10 @@ class AddProject extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-            textfieldwidget("  name"),
-            textfieldwidget("  type"),
-            textfieldwidget("  deadline"),
-            textfieldwidget("  description"),
+            TextFieldWidget(name:"name"),
+            TextFieldWidget(name:"type"),
+            TextFieldWidget(name:"deadline"),
+            TextFieldWidget(name:"description"),
                 
                   TextButton(
                   onPressed: () {
