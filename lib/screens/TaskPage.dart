@@ -222,7 +222,7 @@ class _TaskPageState extends State<TaskPage> {
                   ),
                   Container(
                     width:MediaQuery.of(context).size.width*0.9 ,
-                    height: MediaQuery.of(context).size.height>MediaQuery.of(context).size.width?MediaQuery.of(context).size.height * 0.7:MediaQuery.of(context).size.height*0.4,
+                    height: MediaQuery.of(context).size.height>MediaQuery.of(context).size.width?MediaQuery.of(context).size.height * 0.6:MediaQuery.of(context).size.height*0.2,
                     child: FutureBuilder<List<Task>>(
                         future: state==0?TasksServices().getTasks(project?.id??0,"todo"):state==1?TasksServices().getTasks(project?.id??0,"doing"):TasksServices().getTasks(project?.id??0,"done"),
                         builder: (context, snapshot) {

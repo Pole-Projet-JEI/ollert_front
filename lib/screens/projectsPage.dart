@@ -113,7 +113,7 @@ class _LogoutPageState extends State<LogoutPage> {
             )
           ),
           Container(
-            height: MediaQuery.of(context).size.height>MediaQuery.of(context).size.width?MediaQuery.of(context).size.height * 0.83:MediaQuery.of(context).size.height*0.7,
+            height: MediaQuery.of(context).size.height>MediaQuery.of(context).size.width?MediaQuery.of(context).size.height * 0.8:MediaQuery.of(context).size.height*0.5,
             child: FutureBuilder<List<Project>>(
                 future: ProjectServices().getProjects(),
                 builder: (context, snapshot) {
@@ -172,10 +172,7 @@ class _LogoutPageState extends State<LogoutPage> {
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
                                         Container(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.05,
+                                          height:40,
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(20),
@@ -212,10 +209,7 @@ class _LogoutPageState extends State<LogoutPage> {
                                           ),
                                         ),
                                         Container(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.05,
+                                          height:40,
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(20),

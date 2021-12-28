@@ -55,10 +55,7 @@ class _buttonTaskWidgetState extends State<buttonTaskWidget> {
                          children: [
                            if(widget.state!=0)
                            Container(
-                             height: MediaQuery.of(context)
-                                 .size
-                                 .height *
-                                 0.05,
+                             height:40,
                              decoration: BoxDecoration(
                                borderRadius:
                                BorderRadius.circular(20),
@@ -95,10 +92,7 @@ class _buttonTaskWidgetState extends State<buttonTaskWidget> {
                            ),
                            if(widget.state!=1)
                            Container(
-                             height: MediaQuery.of(context)
-                                 .size
-                                 .height *
-                                 0.05,
+                             height:40,
                              decoration: BoxDecoration(
                                borderRadius:
                                BorderRadius.circular(20),
@@ -135,10 +129,7 @@ class _buttonTaskWidgetState extends State<buttonTaskWidget> {
                            ),
                            if(widget.state!=2)
                              Container(
-                             height: MediaQuery.of(context)
-                                 .size
-                                 .height *
-                                 0.05,
+                             height:40,
                              decoration: BoxDecoration(
                                borderRadius:
                                BorderRadius.circular(20),
@@ -177,10 +168,8 @@ class _buttonTaskWidgetState extends State<buttonTaskWidget> {
                        ),
                      const SizedBox(height: 10,),
                      Container(
-                       height: MediaQuery.of(context)
-                           .size
-                           .height *
-                           0.05,
+                       height:40,
+
                        width:MediaQuery.of(context)
                            .size
                            .width *
