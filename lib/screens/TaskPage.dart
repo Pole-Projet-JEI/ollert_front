@@ -198,7 +198,7 @@ class _TaskPageState extends State<TaskPage> {
                     top: 190,
                     child: Column(
                       children: [
-                        Text("Appuier longtement pour changer d'état",
+                        Text("Appuyer longtement pour changer d'état",
                           style: TextStyle(
                               color: Colors.grey.shade300,
                               fontWeight: FontWeight.bold
